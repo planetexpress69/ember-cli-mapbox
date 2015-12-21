@@ -5,7 +5,7 @@ export default Ember.Component.extend({
   classNameBindings: ['isLoaded'],
   layout: layout,
   iconUrl: '',
-  iconUrl: '',
+  iconRetinaUrl: '',
   iconSize: [30, 45],
   iconAnchor: [15, 45],
   popupAnchor: [0, -45],

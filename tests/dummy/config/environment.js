@@ -10,17 +10,17 @@ module.exports = function(environment) {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
-      },
+      }
     },
 
     mapbox: {
-      accessToken: 'pk.eyJ1IjoiZW1iZXItY2xpLW1hcGJveCIsImEiOiIxMGZiNjA5NWJlNWY2OWRmMWQ3OGExNTkwMzM5NDRiMCJ9.0Vt2Lduj_gUQ0nnSBWIUkA',
+      accessToken: 'pk.eyJ1IjoiZW1iZXItY2xpLW1hcGJveCIsImEiOiIxMGZiNjA5NWJlNWY2OWRmMWQ3OGExNTkwMzM5NDRiMCJ9.0Vt2Lduj_gUQ0nnSBWIUkA'
     },
 
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    },
+    }
   };
 
   if (environment === 'development') {

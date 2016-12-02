@@ -1,4 +1,4 @@
-# Ember-cli-mapbox
+# Ember CLI mapbox [![Circle CI](https://circleci.com/gh/binhums/ember-cli-mapbox/tree/master.svg?style=svg)](https://circleci.com/gh/binhums/ember-cli-mapbox/tree/master)
 
 Template driven Mapbox.js maps in Ember CLI.
 
@@ -32,7 +32,7 @@ corresponding mapId form mapbox.
 If `divId` is not specified it defaults to 'map'.
 
 You can specify the zoom level, center of the map, and trigger an `onclick` event as attributes.
-The `onclick` event will return an instance of the event containing the lat,lng, among other properties. 
+The `onclick` event will return an instance of the event containing the lat,lng, among other properties.
 
 ```hbs
 {{mapbox-map
@@ -57,7 +57,8 @@ templates:
 ```
 
 You can also specify the `size`, `color` and `symbol` of the marker with those
-attributes and trigger an `onclick` event.
+attributes, set the marker to be `draggable` and trigger an `onclick`, an `onpopupopen` and an
+`onpopupclose` event.
 
 Popup titles can be set with `popup-title` and can be opened by setting the
 `is-open` property to true.
@@ -68,6 +69,38 @@ as a property oft he marker:
 ```hbs
 {{mapbox-marker map=map coordinates=position.coordinates recenter=true}}
 ```
+
+### mapbox-markercluster
+
+You can cluster markers into a markercluster group by yielding a mapbox-markercluster and nesting mapbox-markers inside:
+
+```hbs
+{{#mapbox-map mapId='ember-cli-mapbox.7c3914f2' as |map|}}
+  {{#mapbox-markercluster map=map as |cluster|}}
+    {{#each positions as |position|}}
+      {{mapbox-marker map=map cluster=cluster coordinates=position.coordinates}}
+    {{/each}}
+  {{/mapbox-markercluster}}
+{{/mapbox-map}}
+```
+
+Nested mapbox-markers carry all of the same properties/attributes as regular markers.
+
+### mapbox-geojson
+
+Similar to `mapbox-marker`, you can use `mapbox-geojson` to add arbitrary polygons and points to your map:
+
+```hbs
+{{#mapbox-map mapId='ember-cli-mapbox.7c3914f2' as |map|}}
+  {{#each areas as |area|}}
+    {{mapbox-geojson map=map json=area.geometry}}
+  {{/each}}
+{{/mapbox-map}}
+```
+
+You can specify and trigger an `onclick` event.
+
+Popup titles can be set with `popup-title` and can be manually opened by setting the `is-open` property to true.
 
 ## Helpers
 
@@ -108,6 +141,7 @@ The dummy app has some basic mapbox usage.
 
 ## Running Tests
 
+* `npm test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
 * `ember test`
 * `ember test --server`
 

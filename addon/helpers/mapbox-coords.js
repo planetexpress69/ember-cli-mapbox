@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export function mapboxCoords(params/*, hash*/) {
+export function mapboxCoords(params) {
   return [params[0], params[1]];
 }
 

@@ -7,6 +7,11 @@ export default Ember.Component.extend({
   layout: layout,
   symbol: '',
   color: '#444444',
+  iconUrl: '',
+  iconRetinaUrl: '',
+  iconSize: [30, 45],
+  iconAnchor: [15, 45],
+  popupAnchor: [0, -45],
   marker: null,
   draggable: false,
 
@@ -27,14 +32,19 @@ export default Ember.Component.extend({
     }
   }),
 
-  iconChange: Ember.observer('color', 'size', 'symbol', function() {
+  iconChange: Ember.observer('iconUrl', 'iconRetinaUrl', function() {
     let map = this.get('map');
     let marker = this.get('marker');
     if (typeof map !== 'undefined' && marker != null) {
       marker.setIcon(L.mapbox.marker.icon({
-        'marker-color': this.get('color'),
-        'marker-size': this.get('size'),
-        'marker-symbol': this.get('symbol')
+        //'marker-color': this.get('color'),
+        //'marker-size': this.get('size'),
+        //'marker-symbol': this.get('symbol')
+        iconUrl: this.get('iconUrl'),
+        iconRetinaUrl: this.get('iconRetinaUrl'),
+        iconSize: this.get('iconSize'),
+        iconAnchor: this.get('iconAnchor'),
+        popupAnchor: this.get('popupAnchor'),
       }));
     }
   }),
@@ -42,9 +52,14 @@ export default Ember.Component.extend({
   setup: Ember.on('init', function() {
     let marker = L.marker(this.get('coordinates'), {
       icon: L.mapbox.marker.icon({
-        'marker-color': this.get('color'),
-        'marker-size': this.get('size'),
-        'marker-symbol': this.get('symbol')
+        //'marker-color': this.get('color'),
+        //'marker-size': this.get('size'),
+        //'marker-symbol': this.get('symbol')
+        iconUrl: this.get('iconUrl'),
+        iconRetinaUrl: this.get('iconRetinaUrl'),
+        iconSize: this.get('iconSize'),
+        iconAnchor: this.get('iconAnchor'),
+        popupAnchor: this.get('popupAnchor'),
       }),
       draggable: this.get('draggable')
     });

@@ -36,7 +36,7 @@ export default Ember.Component.extend({
     let map = this.get('map');
     let marker = this.get('marker');
     if (typeof map !== 'undefined' && marker != null) {
-      marker.setIcon(L.mapbox.marker.icon({
+      marker.setIcon(L.icon({
         //'marker-color': this.get('color'),
         //'marker-size': this.get('size'),
         //'marker-symbol': this.get('symbol')
@@ -51,7 +51,7 @@ export default Ember.Component.extend({
 
   setup: Ember.on('init', function() {
     let marker = L.marker(this.get('coordinates'), {
-      icon: L.mapbox.marker.icon({
+      icon: L.icon({
         //'marker-color': this.get('color'),
         //'marker-size': this.get('size'),
         //'marker-symbol': this.get('symbol')

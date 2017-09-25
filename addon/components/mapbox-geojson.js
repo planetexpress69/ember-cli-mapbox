@@ -13,6 +13,12 @@ export default Ember.Component.extend({
       geojson.addTo(map);
       return true;
     }
+
+    map.fitBounds([
+      [ 32.958984, -5.353521 ],
+      [ 43.505850,  5.615985 ]
+    ]);
+
     return false;
   }),
 
